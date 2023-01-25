@@ -1,33 +1,62 @@
 <script lang="ts">
     export default {
-        props: ['text']
+        props: {
+            text: String,
+        }
     }
 </script>
 <template>
-    <a>
-        <span>
-            {{ text }}
-        </span>
-    </a>
+    <button>
+        {{ text }}
+    </button>
 </template>
 
 <style scoped>
-    a {
-        color: #b80012;
+
+    button.run-btn {
+        border: none;
+        border-radius: 10px;
         width: 100px;
         height: 40px;
-        display: flex;
+        transition: 0.2s all;
     }
 
-    a span {
-        display: block;
-        margin: auto;
-        text-align: center;
+    button.run-btn:active {
+        transform: scale(0.96);
     }
 
-    a:hover {
+    button.run-btn.bg-primary {
         background-color: #b80012;
         color: white;
-        border-radius: 10px;
     }
+
+    button.run-btn.primary {
+        color: #b80012;
+        transition: 0.2s all;
+    }
+
+    button.run-btn.primary:hover {
+        color: white;
+        background-color: #b80012;
+    }
+
+    button.run-btn.primary:active {
+        color: white;
+        background-color: #b80012;
+    }
+
+    button.run-btn.bg-pink {
+        background-color: #f9dae7;
+        color: #c10049;
+    }
+
+    button.run-btn.pink {
+        color: #c10049;
+    }
+
+    button.run-btn.pink:hover {
+        background-color: #f9dae7;
+        color: #c10049;
+    }
+
 </style>

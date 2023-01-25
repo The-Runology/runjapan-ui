@@ -1,16 +1,15 @@
-<script setup lang="ts">
-  import Topbar from './components/general/Topbar.vue';
-</script>
-  
 <template>
-  <Topbar class="topbar"></Topbar>
+  <Topbar/>
 </template>
 
-<style scoped>
-  .topbar {
-    margin: 0;
+
+<script lang="ts">
+import Topbar from './components/general/Topbar.vue';
+export default {
+  components: {
+    Topbar
   }
-  
-</style>
+}
+</script>
 
 
