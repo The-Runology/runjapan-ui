@@ -19,6 +19,13 @@
         width: 100px;
         height: 40px;
         transition: 0.2s all;
+        font-size: 14px;
+        font-family: 'Noto Serif TC', serif;
+        text-align: center;
+    }
+
+    button.run-btn:hover {
+        cursor: pointer;
     }
 
     button.run-btn:active {
@@ -32,6 +39,7 @@
 
     button.run-btn.primary {
         color: #b80012;
+        background-color: inherit;
         transition: 0.2s all;
     }
 
