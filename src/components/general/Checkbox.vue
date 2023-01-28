@@ -1,19 +1,26 @@
 <template>
 <div>
     <div class="checkbox-form">
-        <div class="fields">
+        <div :class="[
+            'fields',
+            'd-flex',
+            layoutDirection === 'row' ? 'flex-row' : 'flex-column']">
             <label 
                 v-for="(option, i) of options"
                 :key="i"
                 class="option-item"
+                ref="options"
             >
-                <span :for="option" class="labeltext">{{ option }}</span>
+                <span :for="option" :class="['labeltext', textDirection === 'col' ? 'd-block' : '']" :style="{
+                  fontSize: fontSize + 'px',
+                  width: textDirection === 'col' ? fontSize * 1.4 + 'px' : '0'
+                }">{{ option }}</span>
+
                 <input 
-                    :id="option"
+                    :class="'option-' + i"
                     type="checkbox"
-                    v-model="checked"
                     :value="option"
-                    @change="onChange"
+                    @change="onChange(i)"
                 >
                 <span class="checkmark" />
             </label>
@@ -29,16 +36,50 @@ export default {
       type: Array,
       required: false,
       default: () => []
+    },
+    exlusive: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    layoutDirection: {
+      type: String,
+      required: false,
+      default: "row"
+    },
+    textDirection: {
+      type: String,
+      required: false,
+      default: "row"
+    },
+    fontSize: {
+      type: Number,
+      default: 35
     }
   },
   data(){
     return {
-      checked: []
+      checked: Array<Number>()
     };
   },
   methods: {
-    onChange() {
+    onChange(index: number) {
+      
+      if (this.exlusive) {
+        for (let i = 0; i < this.checked.length; ++i) {
+          this.removeCheck(this.checked[i]);
+        }
+        this.checked = []
+      }
+
+      this.checked.push(index);
       this.$emit('input', this.checked);
+    },
+    removeCheck(index: Number) {
+      this.$refs.options[index].getElementsByClassName('option-'+index)[0].checked=false
+    },
+    mounted() {
+      
     }
   }
 };
@@ -73,7 +114,6 @@ export default {
 }
 
 .checkbox-form .labeltext {
-    font-size: 35px;
     font-family: 'Yuji Syuku', serif;
 }
 
@@ -86,10 +126,15 @@ export default {
     opacity: 0;
     left: -5px;
     top: -5px;
-    transition: 0.1s all;
+    transition: 0.2s all;
 }
 
 .checkbox-form input:checked+.checkmark{
     opacity: 100;
 }
+
+.checkmark.hide {
+  opacity: 0 !important;
+}
+
 </style>
