@@ -21,10 +21,10 @@
             </a>
         </div>
        
-        <Button class="run-btn primary" text="費用計算"></Button> 
-        <Button class="run-btn primary" text="高才打分"></Button>
-        <Button class="run-btn primary" text="簽證介紹"></Button>
-        <Button class="run-btn primary" text="潤學の神社"></Button>
+        <Button class="run-btn red" text="費用計算"></Button> 
+        <Button class="run-btn red" text="高才打分"></Button>
+        <Button class="run-btn red" text="簽證介紹"></Button>
+        <Button class="run-btn red" text="潤學の神社"></Button>
     </div>
     
 </template>

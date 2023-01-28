@@ -2,11 +2,22 @@
     export default {
         props: {
             text: String,
+            fontSize: {
+                type: String,
+                default: "14px"
+            },
+            padding: {
+                type: String,
+                default: "0px"
+            }
         }
     }
 </script>
 <template>
-    <button>
+    <button :style="{
+        fontSize: fontSize,
+        padding: padding
+    }">
         {{ text }}
     </button>
 </template>
@@ -16,8 +27,6 @@
     button.run-btn {
         border: none;
         border-radius: 10px;
-        width: 100px;
-        height: 40px;
         transition: 0.2s all;
         font-size: 14px;
         font-family: 'Noto Serif TC', serif;
@@ -32,23 +41,23 @@
         transform: scale(0.96);
     }
 
-    button.run-btn.bg-primary {
+    button.run-btn.bg-red {
         background-color: #b80012;
         color: white;
     }
 
-    button.run-btn.primary {
+    button.run-btn.red {
         color: #b80012;
         background-color: inherit;
         transition: 0.2s all;
     }
 
-    button.run-btn.primary:hover {
+    button.run-btn.red:hover {
         color: white;
         background-color: #b80012;
     }
 
-    button.run-btn.primary:active {
+    button.run-btn.red:active {
         color: white;
         background-color: #b80012;
     }
